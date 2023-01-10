@@ -4,51 +4,31 @@ import './Style.scss'
 export default ({ ...props }) => {
   const attributes = props.rootElement.attributes
 
-  const changedAttribute = attributes['change-attribute'].value
+  const selectorOfElementsToChange = attributes['change-selector'].value
+  const attributeToChange = attributes['change-attribute'].value
   const defaultValue = attributes['default'].value
-  const valuesList = attributes['values-per-button'].value
-    .split(',')
-    .map(el => el.toUpperCase())
+  const valuesList = attributes['values'].value.split(',')
 
-  let valueFromStorage = window.localStorage.getItem(changedAttribute)
+  let valueFromStorage = window.localStorage.getItem(attributeToChange)
   const [selectedValue, setSelectedValue] = useState(valueFromStorage)
 
   if (!valueFromStorage) {
-    setSelectedValue(defaultValue.toUpperCase())
-    window.localStorage.setItem(changedAttribute, defaultValue.toUpperCase())
-    valueFromStorage = window.localStorage.getItem(changedAttribute)
-    window.location.href = changeSearchParams(valueFromStorage)
+    setSelectedValue(defaultValue)
+    window.localStorage.setItem(attributeToChange, defaultValue)
+    valueFromStorage = window.localStorage.getItem(attributeToChange)
   }
 
   function changeAttributeValue(value) {
+    document.querySelectorAll(selectorOfElementsToChange).forEach(element => {
+      element[attributeToChange] = value
+    })
     setSelectedValue(value)
-    window.localStorage.setItem(changedAttribute, value)
+    // TODO: do we need localStorage or sessionStorage?
+    // TODO: store it scoped, not just item on localStorage,
 
-    window.location.href = changeSearchParams(value)
-  }
-
-  function changeSearchParams(value) {
-    const path = window.location.href
-    const searchParamsStart = path.split('').indexOf('?')
-    const searchParams = path.slice(searchParamsStart)
-    const ampersandIndex = searchParams.indexOf('&')
-
-    const attributeIndex = searchParams
-      .toLowerCase()
-      .indexOf(changedAttribute.toLocaleLowerCase())
-    const valueStartIndex = attributeIndex + changedAttribute.length + 1
-    const startStr = searchParams.slice(0, valueStartIndex)
-    let endStr
-
-    if (valueStartIndex < ampersandIndex) {
-      endStr = searchParams.slice(ampersandIndex)
-    } else {
-      endStr = ''
-    }
-
-    const newSearchParam = startStr + value.toLowerCase() + endStr
-
-    return newSearchParam
+    //       create some element for the current App,
+    //       and store it there
+    window.localStorage.setItem(attributeToChange, value)
   }
 
   return (
@@ -64,7 +44,7 @@ export default ({ ...props }) => {
             className="values-list-item"
             onClick={() => changeAttributeValue(value)}
           >
-            {value}
+            {value.toUpperCase()}
           </div>
         ))}
       </div>
