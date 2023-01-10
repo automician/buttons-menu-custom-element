@@ -1,6 +1,6 @@
-import React from 'react';
-import * as ReactDOM from "react-dom/client";
-import { register } from "react-to-html-element";
-import ButtonsOnHover from "./ButtonsOnHover";
+import React from 'react'
+import * as ReactDOM from 'react-dom/client'
+import { register } from 'react-to-html-element'
+import ButtonsMenu from './ButtonsMenu'
 
-register(ButtonsOnHover, 'buttons-on-hover', React, ReactDOM);
+register(ButtonsMenu, 'buttons-menu', React, ReactDOM)

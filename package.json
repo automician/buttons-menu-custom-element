@@ -1,15 +1,14 @@
 {
-  "name": "custom-element",
-  "homepage": "https://artempaskall.github.io/react-custom-html",
+  "name": "buttons-menu-custom-element",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prettier": "prettier --write '**/*.{js,jsx,ts,tsx}'"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -25,7 +24,21 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "import/no-anonymous-default-export": [
+        "error",
+        {
+          "allowArray": false,
+          "allowArrowFunction": true,
+          "allowAnonymousClass": false,
+          "allowAnonymousFunction": false,
+          "allowCallExpression": true,
+          "allowLiteral": false,
+          "allowObject": false
+        }
+      ]
+    }
   },
   "browserslist": {
     "production": [
@@ -41,6 +54,7 @@
   },
   "devDependencies": {
     "gh-pages": "^4.0.0",
-    "node-sass": "^8.0.0"
+    "node-sass": "^8.0.0",
+    "prettier": "^2.8.2"
   }
 }
