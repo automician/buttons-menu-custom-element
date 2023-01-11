@@ -6,8 +6,12 @@ export default ({ ...props }) => {
 
   const selectorOfElementsToChange = attributes['change-selector'].value
   const attributeToChange = attributes['change-attribute'].value
-  const defaultValue = attributes['default'].value
   const valuesList = attributes['values'].value.split(',')
+  const askedDefaultValue = attributes['default'].value
+  const hostDefaultValue = document.querySelector(selectorOfElementsToChange)[
+    attributeToChange
+  ]
+  const defaultValue = hostDefaultValue || askedDefaultValue || valuesList[0]
 
   let valueFromStorage = window.localStorage.getItem(attributeToChange)
   const [selectedValue, setSelectedValue] = useState(valueFromStorage)
@@ -27,7 +31,7 @@ export default ({ ...props }) => {
 
     //       create some element for the current App,
     //       and store it there, like:
-    // windows.localStorage.automician.buttonsMenu.setItem(attributeToChange, value)
+    // windows.localStorage.automician.buttonsMenu[selectorOfElementsToChange].setItem(attributeToChange, value)
     window.localStorage.setItem(attributeToChange, value)
   }
 
