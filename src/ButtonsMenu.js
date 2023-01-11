@@ -23,11 +23,11 @@ export default ({ ...props }) => {
       element[attributeToChange] = value
     })
     setSelectedValue(value)
-    // TODO: do we need localStorage or sessionStorage?
     // TODO: store it scoped, not just item on localStorage,
 
     //       create some element for the current App,
-    //       and store it there
+    //       and store it there, like:
+    // windows.localStorage.automician.buttonsMenu.setItem(attributeToChange, value)
     window.localStorage.setItem(attributeToChange, value)
   }
 
