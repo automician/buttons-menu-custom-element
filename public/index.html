@@ -24,41 +24,53 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <style>
+     .buttons-wrapper {
+        position: fixed;
+        right: 15px;
+        top: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-end;
+
+      }
+    </style>
     <title>React App</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <!-- <div id="root"></div> -->
 
-    <buttons-menu
-      change-selector="#current-country"
-      change-attribute="value"
-      values="ua,us,it,fr"
-      default="ua"
-    ></buttons-menu>
+    <div class="buttons-wrapper">
+      <buttons-menu
+        change-selector="current-code"
+        change-attribute="code"
+        values="js,ts,py,java"
+        default="java"
+      ></buttons-menu>
+
+      <buttons-menu
+        change-selector="current-lang"
+        change-attribute="lang"
+        values="en,uk,ru"
+        default="uk"
+      ></buttons-menu>
+    </div>
 
     <br/>
     <label>Current lang (duplicate):</label>
-    <input id="current-country" type="text" value="it">
-
-    <br/>
-
-    <buttons-menu
-      change-selector="#current-lang"
-      change-attribute="value"
-      values="en,uk,ru"
-      default="uk"
-    ></buttons-menu>
+    <input class="current-code" type="text" code="js">
 
     <br/>
     <label>Current lang:</label>
-    <input id="current-lang" type="text">
+    <input class="current-lang" type="text" lang="it">
     <br/>
     <label>Current code:</label>
-    <input id="current-code" type="text">
+    <input class="current-code" type="text" code="ts">
     <br/>
     <label>Current lang (duplicate):</label>
-    <input id="current-lang" type="text">
+    <input class="current-lang" type="text" lang="ru">
 
     <br/>
 
