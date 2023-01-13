@@ -7,63 +7,51 @@ export default ({ ...props }) => {
   const selectorOfElementsToChange = attributes['change-selector'].value
   const attributeToChange = attributes['change-attribute'].value
   const valuesList = attributes['values'].value.split(',')
-  let askedDefaultValue
-  if (attributes['default']) {
-    askedDefaultValue = attributes['default'].value
+  const maybeAskedDefaultValue = attributes.default?.value
+
+  const elementsToChange = document.querySelectorAll(selectorOfElementsToChange)
+  const maybeHostDefaultValue =
+    elementsToChange && elementsToChange[0].getAttribute(attributeToChange)
+  const defaultValue =
+    maybeHostDefaultValue || maybeAskedDefaultValue || valuesList[0]
+  document
+    .querySelectorAll(selectorOfElementsToChange)
+    .forEach(element => element.setAttribute(attributeToChange, defaultValue))
+
+  const storage = {
+    _scopedAttributeNameToStore: `automician.ButtonsMenu.${selectorOfElementsToChange}.${attributeToChange}`,
+    getAttributeValue() {
+      return window.localStorage.getItem(this._scopedAttributeNameToStore)
+    },
+    setAttributeToChange(value) {
+      window.localStorage.setItem(this._scopedAttributeNameToStore, value)
+    },
   }
-  let elementsToChange = document.getElementsByClassName(selectorOfElementsToChange)
-  let hostDefaultValue
 
-  for (let key of elementsToChange) {
-    if(key.attributes[attributeToChange]) {
-      hostDefaultValue = key.attributes[attributeToChange].value
-    }
+  if (!storage.getAttributeValue()) {
+    storage.setAttributeToChange(defaultValue)
   }
 
-  const defaultValue = hostDefaultValue || askedDefaultValue || valuesList[0]
+  const valueFromStorage = storage.getAttributeValue()
 
-  const storageCheck = window.localStorage.getItem('automician')
-
-  if(!storageCheck) {
-    setItemToStorage(attributeToChange, defaultValue)
-  }
-
-  let valueFromStorage = getItemFromStorage(attributeToChange)
   const [selectedValue, setSelectedValue] = useState(valueFromStorage)
-
-  if (!valueFromStorage) {
-    setSelectedValue(defaultValue)
-    setItemToStorage(attributeToChange, defaultValue)
-  }
+  const state = { selectedValue, setSelectedValue }
 
   function changeAttributeValue(value) {
     document.querySelectorAll(selectorOfElementsToChange).forEach(element => {
-      element[attributeToChange] = value
+      element.setAttribute(attributeToChange, value)
     })
-    setSelectedValue(value)
+    state.setSelectedValue(value)
 
-    setItemToStorage(attributeToChange, value)
-  }
-
-  function getItemFromStorage(value) {
-    return JSON.parse(window.localStorage.getItem('automician'))[value]
-  }
-
-  function setItemToStorage(attribute, value) {
-    let automician = JSON.parse(window.localStorage.getItem('automician'))
-
-    automician = {
-      ...automician,
-      [attribute]: value
-    }
-
-    window.localStorage.setItem('automician', JSON.stringify(automician))
+    storage.setAttributeToChange(value)
   }
 
   return (
     <div className="button-hover">
       <div className="current-value">
-        <span className="current-value-span">{selectedValue.toUpperCase()}</span>
+        <span className="current-value-span">
+          {state.selectedValue.toUpperCase()}
+        </span>
       </div>
       <div className="values-list">
         {valuesList.map(value => (

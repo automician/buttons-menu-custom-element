@@ -33,7 +33,6 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-end;
-
       }
     </style>
     <title>React App</title>
@@ -44,37 +43,35 @@
 
     <div class="buttons-wrapper">
       <buttons-menu
-        change-selector="current-code"
-        change-attribute="code"
+        change-selector=".current-code"
+        change-attribute="value"
         values="js,ts,py,java"
         default="java"
       ></buttons-menu>
 
       <buttons-menu
-        change-selector="current-lang"
-        change-attribute="lang"
+        change-selector=".current-lang"
+        change-attribute="value"
         values="en,uk,ru"
         default="uk"
       ></buttons-menu>
     </div>
 
     <br/>
-    <label>Current lang (duplicate):</label>
-    <input class="current-code" type="text" code="js">
+    <label>Current code:</label>
+    <input class="current-code" type="text">
 
     <br/>
     <label>Current lang:</label>
-    <input class="current-lang" type="text" lang="it">
+    <input class="current-lang" type="text" value="it">
+
     <br/>
     <label>Current code:</label>
-    <input class="current-code" type="text" code="ts">
+    <input class="current-code" type="text">
+
     <br/>
     <label>Current lang (duplicate):</label>
-    <input class="current-lang" type="text" lang="ru">
-
-    <br/>
-
-
+    <input class="current-lang" type="text">
 
     <!--
       This HTML file is a template.
