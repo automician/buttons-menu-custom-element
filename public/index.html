@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -24,56 +22,158 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <style>
-     .buttons-wrapper {
-        position: fixed;
-        right: 15px;
-        top: 15px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-end;
-      }
-    </style>
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <!-- <div id="root"></div> -->
+  <style>
+    .buttons-wrapper {
+      position: fixed;
+      /* right: 15px; */
+      right: 1%;
+      top: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      /* justify-content: flex-start; */
+      align-items: flex-end;
+    }
+  </style>
+  <title>React App</title>
+</head>
 
-    <div class="buttons-wrapper">
-      <buttons-menu
-        change-selector=".current-code"
-        change-attribute="value"
-        values="js,ts,py,java"
-        default="java"
-      ></buttons-menu>
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <!-- <div id="root"></div> -->
 
-      <buttons-menu
-        change-selector=".current-lang"
-        change-attribute="value"
-        values="en,uk,ru"
-        default="uk"
-      ></buttons-menu>
-    </div>
+  <!-- <div class="buttons-wrapper">
+    <buttons-menu change-selector=".current-code" change-attribute="value" values="js,ts,py,java"
+      default="java"></buttons-menu>
 
-    <br/>
-    <label>Current code:</label>
-    <input class="current-code" type="text">
+    <buttons-menu change-selector=".current-lang" change-attribute="value" values="en,uk,ru"
+      default="uk"></buttons-menu>
+  </div> -->
 
-    <br/>
-    <label>Current lang:</label>
-    <input class="current-lang" type="text" value="it">
+  <fixed-layout>
+    <flex-layout style="top: 15px; right: 15px; flex-direction: column; align-items: flex-end;">
+      <buttons-menu change-selector=".current-code" change-attribute="value" values="js,ts,py,java"
+        default="java"></buttons-menu>
 
-    <br/>
-    <label>Current code:</label>
-    <input class="current-code" type="text">
+      <buttons-menu change-selector=".current-lang" change-attribute="value" values="en,uk,ru"
+        default="uk"></buttons-menu>
+    </flex-layout>
+  </fixed-layout>
 
-    <br/>
-    <label>Current lang (duplicate):</label>
-    <input class="current-lang" type="text">
+  <!-- <div style="display: flex; flex-direction: row; align-items: center;"> -->
+  <flex-layout>
+    <flex-2></flex-2>
+    <flex-6>
+      <!---->
+      <div id="content">
+        <br>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Arcu bibendum at varius vel. Sit amet tellus cras adipiscing. Ullamcorper morbi tincidunt ornare
+          massa. Interdum varius sit amet mattis. Venenatis urna cursus eget nunc scelerisque viverra. Accumsan lacus
+          vel
+          facilisis volutpat est. Varius sit amet mattis vulputate enim nulla. Odio aenean sed adipiscing diam donec.
+          Ipsum
+          dolor sit amet consectetur adipiscing elit.</p>
+        <br />
+        <label>Current code:</label>
+        <input class="current-code" type="text">
 
-    <!--
+        <br />
+        <label>Current lang:</label>
+        <input class="current-lang" type="text">
+        <!-- <input class="current-lang" type="text" value="it"> TODO: make it work -->
+
+        <br />
+        <label>Current code:</label>
+        <input class="current-code" type="text">
+
+        <br />
+        <label>Current lang (duplicate):</label>
+        <input class="current-lang" type="text">
+        <p>Morbi tincidunt augue interdum velit euismod in. Sit amet nisl purus in. Sed velit dignissim sodales ut eu
+          sem.
+          Consequat id porta nibh venenatis cras sed felis eget. Nulla facilisi cras fermentum odio. Dui faucibus in
+          ornare
+          quam viverra orci sagittis eu volutpat. Feugiat nisl pretium fusce id velit ut tortor pretium. Lorem ipsum
+          dolor
+          sit amet. Leo vel fringilla est ullamcorper eget. Imperdiet nulla malesuada pellentesque elit. Amet nisl purus
+          in
+          mollis nunc sed id semper. Enim nec dui nunc mattis enim. Non nisi est sit amet facilisis magna.</p>
+        <p>Sed blandit libero volutpat sed cras ornare arcu dui vivamus. Integer enim neque volutpat ac tincidunt vitae.
+          Ac
+          placerat vestibulum lectus mauris ultrices eros in cursus turpis. Mauris a diam maecenas sed enim. Vitae purus
+          faucibus ornare suspendisse sed nisi lacus sed viverra. Nunc vel risus commodo viverra maecenas accumsan lacus
+          vel. In dictum non consectetur a erat nam. Arcu ac tortor dignissim convallis aenean et tortor at. Sapien eget
+          mi
+          proin sed libero enim. Bibendum neque egestas congue quisque egestas. Adipiscing bibendum est ultricies
+          integer
+          quis auctor elit sed. Nulla pharetra diam sit amet nisl. In ornare quam viverra orci sagittis eu volutpat.
+          Sagittis vitae et leo duis ut. Imperdiet sed euismod nisi porta lorem.</p>
+        <p>Urna molestie at elementum eu facilisis. Imperdiet sed euismod nisi porta lorem mollis aliquam ut porttitor.
+          Nam
+          aliquam sem et tortor consequat id. Viverra adipiscing at in tellus integer feugiat scelerisque. Gravida cum
+          sociis natoque penatibus. Vulputate sapien nec sagittis aliquam malesuada bibendum arcu. Amet luctus venenatis
+          lectus magna fringilla urna porttitor. Tincidunt eget nullam non nisi. Elit sed vulputate mi sit amet mauris
+          commodo quis. Arcu cursus vitae congue mauris rhoncus aenean. Sed viverra ipsum nunc aliquet bibendum enim.
+          Proin
+          fermentum leo vel orci porta non pulvinar. Senectus et netus et malesuada fames ac turpis egestas integer.
+          Erat
+          imperdiet sed euismod nisi porta lorem mollis. Morbi leo urna molestie at elementum. Ultricies leo integer
+          malesuada nunc vel risus commodo viverra.</p>
+        <p>Sit amet facilisis magna etiam tempor orci. Et sollicitudin ac orci phasellus. Vel elit scelerisque mauris
+          pellentesque pulvinar. Eget arcu dictum varius duis at consectetur lorem donec. Faucibus scelerisque eleifend
+          donec pretium. Non arcu risus quis varius quam quisque id diam. Convallis posuere morbi leo urna molestie.
+          Libero
+          nunc consequat interdum varius sit. Faucibus et molestie ac feugiat. Dui ut ornare lectus sit amet est
+          placerat.
+          Nulla facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum. Ac placerat vestibulum lectus
+          mauris. Vitae aliquet nec ullamcorper sit. Sapien faucibus et molestie ac feugiat sed lectus.</p>
+        <p>Condimentum vitae sapien pellentesque habitant morbi tristique. At ultrices mi tempus imperdiet nulla
+          malesuada
+          pellentesque elit eget. Cras semper auctor neque vitae tempus quam pellentesque nec nam. Velit scelerisque in
+          dictum non consectetur a erat nam. Nisl vel pretium lectus quam id leo in vitae turpis. Et magnis dis
+          parturient
+          montes nascetur ridiculus mus mauris. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper
+          dignissim. Tristique nulla aliquet enim tortor at auctor. Nisl purus in mollis nunc sed id semper risus in.
+          Amet
+          consectetur adipiscing elit pellentesque habitant. Nisl rhoncus mattis rhoncus urna neque. Et tortor consequat
+          id
+          porta nibh venenatis. Massa vitae tortor condimentum lacinia. Pellentesque massa placerat duis ultricies. Ut
+          sem
+          viverra aliquet eget sit amet tellus cras. Dolor sit amet consectetur adipiscing elit ut aliquam purus sit.
+          Etiam
+          dignissim diam quis enim. Aliquet risus feugiat in ante metus. Euismod elementum nisi quis eleifend.</p>
+        <p>Phasellus faucibus scelerisque eleifend donec. Proin nibh nisl condimentum id venenatis a condimentum vitae.
+          Id
+          diam vel quam elementum pulvinar etiam non. Scelerisque eu ultrices vitae auctor. Justo donec enim diam
+          vulputate
+          ut pharetra sit. Facilisis sed odio morbi quis commodo odio aenean sed. Lectus nulla at volutpat diam. Rhoncus
+          mattis rhoncus urna neque. Risus sed vulputate odio ut enim. Tempor nec feugiat nisl pretium fusce id velit ut
+          tortor. Consequat semper viverra nam libero justo laoreet. Orci sagittis eu volutpat odio. Ipsum dolor sit
+          amet
+          consectetur adipiscing. Ornare aenean euismod elementum nisi quis eleifend quam adipiscing. Tellus cras
+          adipiscing
+          enim eu turpis egestas pretium aenean pharetra. Turpis egestas integer eget aliquet nibh praesent tristique
+          magna.
+          Faucibus nisl tincidunt eget nullam non nisi est sit amet. Eu non diam phasellus vestibulum lorem sed risus.
+          Morbi
+          tincidunt ornare massa eget egestas purus viverra. Vitae tortor condimentum lacinia quis vel eros donec ac
+          odio.
+        </p>
+        <p>Aliquam nulla facilisi cras fermentum. Vivamus at augue eget arcu dictum varius duis. Posuere sollicitudin
+          aliquam ultrices sagittis orci a. Tortor at auctor urna nunc id cursus metus aliquam. Massa sapien faucibus et
+          molestie ac feugiat. Viverra tellus in hac habitasse platea dictumst vestibulum rhoncus est. Egestas fringilla
+          phasellus faucibus scelerisque eleifend donec pretium vulputate. Dis parturient montes nascetur ridiculus mus.
+          Eu
+          tincidunt tortor aliquam nulla facilisi cras fermentum odio eu. Vitae ultricies leo integer malesuada nunc vel
+          risus. Ut enim blandit volutpat maecenas volutpat blandit aliquam.</p>
+      </div>
+      <!---->
+    </flex-6>
+    <flex-2></flex-2>
+  </flex-layout>
+  <!-- </div> -->
+  <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 
@@ -83,5 +183,6 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
+</body>
+
 </html>

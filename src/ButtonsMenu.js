@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Style.scss'
 
-export default ({ ...props }) => {
+export default props => {
   const attributes = props.rootElement.attributes
 
   const selectorOfElementsToChange = attributes['change-selector'].value
