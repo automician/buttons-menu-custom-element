@@ -17,7 +17,6 @@
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
-
       Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
@@ -45,20 +44,28 @@
   <!-- <div class="buttons-wrapper">
     <buttons-menu change-selector=".current-code" change-attribute="value" values="js,ts,py,java"
       default="java"></buttons-menu>
-
     <buttons-menu change-selector=".current-lang" change-attribute="value" values="en,uk,ru"
       default="uk"></buttons-menu>
   </div> -->
 
-  <fixed-layout>
+  <!-- <fixed-layout>
     <flex-layout style="top: 15px; right: 15px; flex-direction: column; align-items: flex-end;">
       <buttons-menu change-selector=".current-code" change-attribute="value" values="js,ts,py,java"
-        default="java"></buttons-menu>
+      default="java"></buttons-menu>
 
       <buttons-menu change-selector=".current-lang" change-attribute="value" values="en,uk,ru"
-        default="uk"></buttons-menu>
+      default="uk"></buttons-menu>
     </flex-layout>
-  </fixed-layout>
+  </fixed-layout> -->
+
+
+  <label>.current-code (default=java):</label>
+  <buttons-menu change-selector=".current-code" change-attribute="value" values="js,ts,py,java"
+  default="java"></buttons-menu>
+
+  <label>.current-lang (default=uk):</label>
+  <buttons-menu change-selector=".current-lang" change-attribute="value" values="en,uk,ru"
+  default="uk"></buttons-menu>
 
   <!-- <div style="display: flex; flex-direction: row; align-items: center;"> -->
   <flex-layout>
@@ -75,21 +82,23 @@
           Ipsum
           dolor sit amet consectetur adipiscing elit.</p>
         <br />
-        <label>Current code:</label>
+        <label>.current-code (without prefilled attribute):</label>
         <input class="current-code" type="text">
 
         <br />
-        <label>Current lang:</label>
+        <label>.current-lang (without prefilled value):</label>
         <input class="current-lang" type="text">
-        <!-- <input class="current-lang" type="text" value="it"> TODO: make it work -->
+        <label>.current-lang (with prefilled value):</label>
+        <input class="current-lang" type="text" value="it"> <!--TODO: make it work-->
 
         <br />
-        <label>Current code:</label>
+        <label>.current-code:</label>
         <input class="current-code" type="text">
 
         <br />
-        <label>Current lang (duplicate):</label>
+        <label>.current-lang (duplicate):</label>
         <input class="current-lang" type="text">
+        <br/>
         <p>Morbi tincidunt augue interdum velit euismod in. Sit amet nisl purus in. Sed velit dignissim sodales ut eu
           sem.
           Consequat id porta nibh venenatis cras sed felis eget. Nulla facilisi cras fermentum odio. Dui faucibus in
@@ -176,10 +185,8 @@
   <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
-
       You can add webfonts, meta tags, or analytics to this file.
       The build step will place the bundled scripts into the <body> tag.
-
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
