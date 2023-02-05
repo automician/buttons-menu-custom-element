@@ -9,6 +9,17 @@ export default props => {
   const valuesList = attributes['values'].value.split(',')
   const maybeAskedDefaultValue = attributes.default?.value
 
+  console.log('selectorOfElementsToChange', selectorOfElementsToChange)
+  console.log(
+    'value of first before render: ',
+    document.querySelectorAll(selectorOfElementsToChange)[0][attributeToChange],
+  )
+  console.log(
+    'value of attr of first before render: ',
+    document
+      .querySelectorAll(selectorOfElementsToChange)[0]
+      .getAttribute(attributeToChange),
+  )
   const storage = {
     _scopedAttributeNameToStore: `automician.ButtonsMenu.${selectorOfElementsToChange}.${attributeToChange}`,
     getAttributeToChangeValue() {
@@ -56,7 +67,7 @@ export default props => {
     storage.setAttributeToChangeValue(defaultValue)
   }
 
-  const defaultValueFromStorage = storage.getAttributeToChangeValue()
+  const valueFromStorage = storage.getAttributeToChangeValue()
 
   const changeElementsAttribute = value =>
     document.querySelectorAll(selectorOfElementsToChange).forEach(element => {
@@ -69,24 +80,45 @@ export default props => {
       }
     })
 
-  changeElementsAttribute(defaultValueFromStorage)
-
-  const valueFromStorage = storage.getAttributeToChangeValue()
   const [selectedValue, setSelectedValue] = useState(valueFromStorage)
   const state = { selectedValue, setSelectedValue }
 
-  // useEffect(() => {
-  //   document.querySelectorAll(selectorOfElementsToChange).forEach(element => {
-  //     element.setAttribute(attributeToChange, selectedValue)
-  //   })
-  // }, [selectedValue])
-
   function changeAttributeValueHandler(value) {
-    changeElementsAttribute(value)
-
     state.setSelectedValue(value)
     storage.setAttributeToChangeValue(value)
   }
+
+  // changeElementsAttribute(defaultValueFromStorage)
+  useEffect(
+    () => {
+      console.log(
+        'value of first before change: ',
+        document.querySelectorAll(selectorOfElementsToChange)[0][attributeToChange],
+      )
+      console.log(
+        'value of attr of first before change: ',
+        document
+          .querySelectorAll(selectorOfElementsToChange)[0]
+          .getAttribute(attributeToChange),
+      )
+      console.dir([...document.querySelectorAll(selectorOfElementsToChange)])
+      console.log('going to change attributes...')
+      changeElementsAttribute(valueFromStorage)
+      console.log(
+        'value of first after change: ',
+        document.querySelectorAll(selectorOfElementsToChange)[0][attributeToChange],
+      )
+      console.log(
+        'value of attr of first after change: ',
+        document
+          .querySelectorAll(selectorOfElementsToChange)[0]
+          .getAttribute(attributeToChange),
+      )
+      console.dir([...document.querySelectorAll(selectorOfElementsToChange)])
+    } /*, [selectedValue]*/,
+  )
+
+  // useEffect(() => changeAttributeValueHandler(valueFromStorage))
 
   return (
     <div className="button-hover">

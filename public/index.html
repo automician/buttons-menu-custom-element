@@ -59,6 +59,11 @@
   </fixed-layout> -->
 
 
+  <label>.current-span (default=java):</label>
+  <buttons-menu change-selector=".current-span" change-attribute="data-value" values="js,ts,py,java"
+  default="java"></buttons-menu>
+
+
   <label>.current-code (default=java):</label>
   <buttons-menu change-selector=".current-code" change-attribute="value" values="js,ts,py,java"
   default="java"></buttons-menu>
@@ -84,6 +89,10 @@
         <br />
         <label>.current-code (without prefilled attribute):</label>
         <input class="current-code" type="text">
+        <br />
+        <span class="current-span">check here the value attribute of .current-code</span>
+        <br />
+        <span class="current-span" data-value="py">check here the value attribute of .current-code with value attr</span>
 
         <br />
         <label>.current-lang (without prefilled value):</label>
