@@ -44,7 +44,7 @@ export default props => {
         if (sameValueWasCompromised) {
           return sameValue
         }
-        const hostDefault = host.getAttribute(attributeToChange)
+        const hostDefault = host.getAttribute(attributeToChange) // todo: count when to get as host[attributeToChange]
         const sameValueWasSet = sameValue && sameValue.length > 0
         if (!sameValueWasSet) {
           // set sameValue first time!
