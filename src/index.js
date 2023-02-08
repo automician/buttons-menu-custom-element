@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useLayoutEffect } from 'react'
 import * as ReactDOM from 'react-dom/client'
 import { register } from 'react-to-html-element'
 import ButtonsMenu from './ButtonsMenu'
@@ -14,9 +14,10 @@ register(
 
 register(
   ({ children, style }) => {
-    useEffect(() => {
+    // useEffect(() => {
+    useLayoutEffect(() => {
       document.dispatchEvent(new Event('FlexLayoutContentLoaded'))
-    }, [])
+    })
     return (
       <div
         style={{
