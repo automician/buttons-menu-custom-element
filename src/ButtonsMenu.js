@@ -9,17 +9,29 @@ export default props => {
   const valuesList = attributes['values'].value.split(',')
   const maybeAskedDefaultValue = attributes.default?.value
 
-  console.log('selectorOfElementsToChange', selectorOfElementsToChange)
-  console.log(
-    'value of first before render: ',
-    document.querySelectorAll(selectorOfElementsToChange)[0][attributeToChange],
+  const maybeContainerizedContentLoadedEvent = attributes['on']?.value
+  const shouldWeRenderOnEvent = !!maybeContainerizedContentLoadedEvent
+  const [isContainerizedContentLoaded, setIsContainerizedContentLoaded] = useState(
+    shouldWeRenderOnEvent ? false : true,
   )
-  console.log(
-    'value of attr of first before render: ',
-    document
-      .querySelectorAll(selectorOfElementsToChange)[0]
-      .getAttribute(attributeToChange),
-  )
+
+  if (shouldWeRenderOnEvent) {
+    document.addEventListener(maybeContainerizedContentLoadedEvent, () =>
+      setIsContainerizedContentLoaded(true),
+    )
+  }
+
+  // console.log('selectorOfElementsToChange', selectorOfElementsToChange)
+  // console.log(
+  //   'value of first before render: ',
+  //   document.querySelectorAll(selectorOfElementsToChange)[0][attributeToChange],
+  // )
+  // console.log(
+  //   'value of attr of first before render: ',
+  //   document
+  //     .querySelectorAll(selectorOfElementsToChange)[0]
+  //     .getAttribute(attributeToChange),
+  // )
   const storage = {
     _scopedAttributeNameToStore: `automician.ButtonsMenu.${selectorOfElementsToChange}.${attributeToChange}`,
     getAttributeToChangeValue() {
@@ -72,10 +84,10 @@ export default props => {
   const changeElementsAttribute = value =>
     document.querySelectorAll(selectorOfElementsToChange).forEach(element => {
       if (element.hasAttribute(attributeToChange)) {
-        console.log('has attribute: ', attributeToChange)
+        // console.log('has attribute: ', attributeToChange)
         element[attributeToChange] = value
       } else {
-        console.log('has no attribute: ', attributeToChange)
+        // console.log('has no attribute: ', attributeToChange)
         element.setAttribute(attributeToChange, value)
       }
     })
@@ -86,36 +98,21 @@ export default props => {
   function changeAttributeValueHandler(value) {
     state.setSelectedValue(value)
     storage.setAttributeToChangeValue(value)
+    // changeElementsAttribute(value)
   }
 
   // changeElementsAttribute(defaultValueFromStorage)
   useEffect(
     () => {
       console.log(
-        'value of first before change: ',
-        document.querySelectorAll(selectorOfElementsToChange)[0][attributeToChange],
+        'change when isContainerizedContentLoaded: ',
+        isContainerizedContentLoaded,
       )
-      console.log(
-        'value of attr of first before change: ',
-        document
-          .querySelectorAll(selectorOfElementsToChange)[0]
-          .getAttribute(attributeToChange),
-      )
-      console.dir([...document.querySelectorAll(selectorOfElementsToChange)])
-      console.log('going to change attributes...')
+      console.log('valueFromStorage: ', valueFromStorage)
       changeElementsAttribute(valueFromStorage)
-      console.log(
-        'value of first after change: ',
-        document.querySelectorAll(selectorOfElementsToChange)[0][attributeToChange],
-      )
-      console.log(
-        'value of attr of first after change: ',
-        document
-          .querySelectorAll(selectorOfElementsToChange)[0]
-          .getAttribute(attributeToChange),
-      )
-      console.dir([...document.querySelectorAll(selectorOfElementsToChange)])
-    } /*, [selectedValue]*/,
+    },
+    [isContainerizedContentLoaded, valueFromStorage],
+    // } /*, [selectedValue]*/,
   )
 
   // useEffect(() => changeAttributeValueHandler(valueFromStorage))

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import * as ReactDOM from 'react-dom/client'
 import { register } from 'react-to-html-element'
 import ButtonsMenu from './ButtonsMenu'
@@ -13,18 +13,23 @@ register(
 )
 
 register(
-  ({ children, style }) => (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        ...style,
-      }}
-    >
-      {children}
-    </div>
-  ),
+  ({ children, style }) => {
+    useEffect(() => {
+      document.dispatchEvent(new Event('FlexLayoutContentLoaded'))
+    }, [])
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          ...style,
+        }}
+      >
+        {children}
+      </div>
+    )
+  },
   'flex-layout',
   React,
   ReactDOM,
