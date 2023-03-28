@@ -26,7 +26,6 @@ export default props => {
     const elementsToChange = [
       ...document.querySelectorAll(selectorOfElementsToChange),
     ]
-    console.log('elementsToChange', elementsToChange)
 
     const [hostsAttributeSamePrefilledValue] = elementsToChange.reduce(
       (sameValue, host) => {
@@ -45,7 +44,7 @@ export default props => {
 
         if (sameValueWasSet && areEqual(sameValue, [hostDefault])) {
           // compromised!
-          return []
+          // return []
         }
 
         return [hostDefault]
@@ -63,9 +62,6 @@ export default props => {
 
   const isContentLoadedPromise = shouldWeRenderOnEvent
     ? new Promise((resolve, reject) => {
-        setTimeout(() => {
-          reject()
-        }, 2000)
         document.addEventListener(maybeContainerizedContentLoadedEvent, () =>
           resolve(),
         )
@@ -92,10 +88,12 @@ export default props => {
 
   useEffect(
     () => {
-      isContentLoadedPromise.then(
+      isContentLoadedPromise
+      .then(
         loaded => changeElementsAttribute(valueFromStorage),
         notLoaded => changeElementsAttribute(valueFromStorage),
       )
+      .catch(err => console.log(err))
     },
     [], // on mount render only
   )

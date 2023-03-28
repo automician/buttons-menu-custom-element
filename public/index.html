@@ -24,12 +24,11 @@
   <style>
     .buttons-wrapper {
       position: fixed;
-      /* right: 15px; */
-      right: 1%;
+      right: 15px;
       top: 15px;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+      justify-content: flex-end;
       /* justify-content: flex-start; */
       align-items: flex-end;
     }
@@ -48,15 +47,15 @@
       default="uk"></buttons-menu>
   </div> -->
 
-  <!-- <fixed-layout>
-    <flex-layout style="top: 15px; right: 15px; flex-direction: column; align-items: flex-end;">
+  <fixed-layout>
+    <!-- <flex-layout style="top: 15px; right: 15px; flex-direction: column; align-items: flex-end;"> -->
       <buttons-menu change-selector=".current-code" change-attribute="value" values="js,ts,py,java"
       default="java"></buttons-menu>
 
       <buttons-menu change-selector=".current-lang" change-attribute="value" values="en,uk,ru"
       default="uk"></buttons-menu>
-    </flex-layout>
-  </fixed-layout> -->
+    <!-- </flex-layout> -->
+  </fixed-layout>
 
 
   <!--
@@ -67,14 +66,14 @@
 
   -->
 
-  <label>.current-code (default=java):</label>
+  <!-- <label>.current-code (default=java):</label>
   <buttons-menu change-selector=".current-code" change-attribute="value" values="js,ts,py,java"
-  default="java" on="FlexLayoutContentLoaded"></buttons-menu>
+  default="java" on="FlexLayoutContentLoaded"></buttons-menu> -->
 
 
-  <label>.current-lang (default=uk):</label>
+  <!-- <label>.current-lang (default=uk):</label>
   <buttons-menu change-selector=".current-lang" change-attribute="value" values="en,uk,ru"
-  default="uk"></buttons-menu>
+  default="uk" on="FlexLayoutContentLoaded"></buttons-menu> -->
 
   <!--
   -->
@@ -103,9 +102,9 @@
 
         <br />
         <label>.current-lang (without prefilled value):</label>
-        <input class="current-lang" type="text">
+        <input class="current-lang" type="text" value="it">
         <label>.current-lang (with prefilled value):</label>
-        <input class="current-lang" type="text" value="it"> <!--TODO: make it work-->
+        <input class="current-lang" type="text"> <!--TODO: make it work-->
 
         <br />
         <label>.current-code:</label>
