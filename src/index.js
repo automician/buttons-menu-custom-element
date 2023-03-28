@@ -62,6 +62,8 @@ const FlexFillWithGrow =
   ({ children, rootElement, style }) => {
     rootElement.style.flex = grow
     console.log('style', style);
+    console.log('children', children);
+    console.log('rootElement', rootElement);
     return children || <React.Fragment />
   }
 
