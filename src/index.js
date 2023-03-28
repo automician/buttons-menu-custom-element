@@ -5,7 +5,7 @@ import ButtonsMenu from './ButtonsMenu'
 
 register(ButtonsMenu, 'buttons-menu', React, ReactDOM)
 
-register(({ rootElement, children }) => {
+register(({ rootElement, children, style }) => {
   rootElement.style.position = 'fixed'
   rootElement.style.right = '15px'
   rootElement.style.top = '15px'
@@ -43,7 +43,7 @@ register(
 )
 
 register(
-  ({ children, rootElement }) => {
+  ({ children, rootElement, style }) => {
     const {
       attributes: {
         grow: { value: grow },
