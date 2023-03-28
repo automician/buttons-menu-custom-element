@@ -50,7 +50,6 @@ register(
       },
     } = rootElement
     rootElement.style.flex = grow
-    console.log('space', grow)
     return children || React.Component
   },
   'flex-fill',
@@ -62,6 +61,7 @@ const FlexFillWithGrow =
   grow =>
   ({ children, rootElement, style }) => {
     rootElement.style.flex = grow
+    console.log('style', style);
     return children || <React.Fragment />
   }
 
