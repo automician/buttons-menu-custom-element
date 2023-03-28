@@ -59,11 +59,8 @@ register(
 
 const FlexFillWithGrow =
   grow =>
-  ({ children, rootElement, style }) => {
+  ({ children, rootElement }) => {
     rootElement.style.flex = grow
-    console.log('style', style);
-    console.log('children', children);
-    console.log('rootElement', rootElement);
     return children || <React.Fragment />
   }
 
