@@ -113,7 +113,7 @@ export default props => {
             className="values-list-item"
             onClick={() => {
               changeAttributeValueHandler(value)
-              document.dispatchEvent('changeLanguage')
+              document.dispatchEvent(new Event('changeLanguage'))
             }}
           >
             {value.toUpperCase()}
