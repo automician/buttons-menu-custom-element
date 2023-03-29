@@ -29,7 +29,7 @@ register(
     rootElement.style.flexDirection = 'row'
     rootElement.style.alignItems = 'center'
     useLayoutEffect(() => {
-      // document.dispatchEvent(new Event('FlexLayoutContentLoaded'))
+      document.dispatchEvent(new Event('FlexLayoutContentLoaded'))
     })
     return (
       <>

@@ -89,11 +89,11 @@ export default props => {
   useEffect(
     () => {
       isContentLoadedPromise
-      .then(
-        loaded => changeElementsAttribute(valueFromStorage),
-        notLoaded => changeElementsAttribute(valueFromStorage),
-      )
-      .catch(err => console.log(err))
+        .then(
+          loaded => changeElementsAttribute(valueFromStorage),
+          notLoaded => changeElementsAttribute(valueFromStorage),
+        )
+        .catch(err => console.log(err))
     },
     [], // on mount render only
   )
@@ -111,7 +111,10 @@ export default props => {
             value
             key={value}
             className="values-list-item"
-            onClick={() => changeAttributeValueHandler(value)}
+            onClick={() => {
+              changeAttributeValueHandler(value)
+              document.dispatchEvent('changeLanguage')
+            }}
           >
             {value.toUpperCase()}
           </div>
