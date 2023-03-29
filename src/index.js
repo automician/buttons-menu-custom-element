@@ -5,7 +5,7 @@ import ButtonsMenu from './ButtonsMenu'
 
 register(ButtonsMenu, 'buttons-menu', React, ReactDOM)
 
-register(({ rootElement, children, style }) => {
+register(({ rootElement, children }) => {
   rootElement.style.position = 'fixed'
   rootElement.style.right = '15px'
   rootElement.style.top = '15px'
@@ -24,12 +24,12 @@ register(({ rootElement, children, style }) => {
 )
 
 register(
-  ({rootElement, children, style }) => {
+  ({ rootElement, children }) => {
     rootElement.style.display = 'flex'
     rootElement.style.flexDirection = 'row'
     rootElement.style.alignItems = 'center'
     useLayoutEffect(() => {
-      document.dispatchEvent(new Event('FlexLayoutContentLoaded'))
+      // document.dispatchEvent(new Event('FlexLayoutContentLoaded'))
     })
     return (
       <>
@@ -43,7 +43,7 @@ register(
 )
 
 register(
-  ({ children, rootElement, style }) => {
+  ({ children, rootElement }) => {
     const {
       attributes: {
         grow: { value: grow },

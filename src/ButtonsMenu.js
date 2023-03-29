@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import './Style.scss'
 
 export default props => {
-  console.log('buttons', props)
   const attributes = props.rootElement.attributes
 
   const selectorOfElementsToChange = attributes['change-selector'].value
