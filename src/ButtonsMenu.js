@@ -6,7 +6,7 @@ export default props => {
 
   const selectorOfElementsToChange = attributes['change-selector'].value
   const attributeToChange = attributes['change-attribute'].value
-  const valuesList = attributes['values'].value.split(',')
+  const valuesList = attributes['values'].value.split(',').map(value => value.trim())
   console.log('valuesList', valuesList)
   const maybeAskedDefaultValue = attributes.default?.value
 
