@@ -8,7 +8,7 @@ export default props => {
   const attributeToChange = attributes['change-attribute'].value
   const valuesList = attributes['values'].value.split(',').map(value => value.trim())
   const maybeAskedDefaultValue = attributes.default?.value
-  console.log(attributes)
+  console.log(attributes['on'])
   const maybeContainerizedContentLoadedEvent = attributes['on']?.value
   const shouldWeRenderOnEvent = !!maybeContainerizedContentLoadedEvent
 
@@ -88,6 +88,7 @@ export default props => {
 
   useEffect(
     () => {
+      console.log(attributes['on'])
       isContentLoadedPromise
         .then(
           loaded => changeElementsAttribute(valueFromStorage),
