@@ -74,7 +74,8 @@ export default props => {
       if (element.hasAttribute(attributeToChange)) {
         console.log('element[attributeToChange]1', element[attributeToChange])
         console.log('value1', value)
-        element[attributeToChange] = value
+        element.attributes[attributeToChange].value = value
+        // element[attributeToChange] = value
       } else {
         console.log('element[attributeToChange]2', element[attributeToChange])
         console.log('value2', value)
