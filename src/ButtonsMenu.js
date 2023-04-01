@@ -8,10 +8,9 @@ export default props => {
   const attributeToChange = attributes['change-attribute'].value
   const valuesList = attributes['values'].value.split(',').map(value => value.trim())
   const maybeAskedDefaultValue = attributes.default?.value
-  console.log(attributes['on'])
   const maybeContainerizedContentLoadedEvent = attributes['on']?.value
   const shouldWeRenderOnEvent = !!maybeContainerizedContentLoadedEvent
-
+ console.log(attributeToChange)
   const storage = {
     _scopedAttributeNameToStore: `automician.ButtonsMenu.${selectorOfElementsToChange}.${attributeToChange}`,
     getAttributeToChangeValue() {
@@ -44,7 +43,7 @@ export default props => {
 
         if (sameValueWasSet && areEqual(sameValue, [hostDefault])) {
           // compromised!
-          // return []
+          return []
         }
 
         return [hostDefault]
@@ -88,7 +87,6 @@ export default props => {
 
   useEffect(
     () => {
-      console.log(attributes['on'])
       isContentLoadedPromise
         .then(
           loaded => changeElementsAttribute(valueFromStorage),
