@@ -72,16 +72,11 @@ export default props => {
   const changeElementsAttribute = value =>
     document.querySelectorAll(selectorOfElementsToChange).forEach(element => {
       if (element.hasAttribute(attributeToChange)) {
-        console.log('element[attributeToChange]1', element[attributeToChange])
-        console.log('value1', value)
         element.attributes[attributeToChange].value = value
         // element[attributeToChange] = value
       } else {
-        console.log('element[attributeToChange]2', element[attributeToChange])
-        console.log('value2', value)
-        element.setAttribute(attributeToChange, value)
-        console.log('element[attributeToChange]3', element[attributeToChange])
-        console.log('value3', value)
+        // element.setAttribute(attributeToChange, value)
+        element.attributes[attributeToChange].value = value
       }
     })
 
