@@ -10,8 +10,7 @@ export default props => {
   const maybeAskedDefaultValue = attributes.default?.value
   const maybeContainerizedContentLoadedEvent = attributes['on']?.value
   const shouldWeRenderOnEvent = !!maybeContainerizedContentLoadedEvent
-  console.log('selectorOfElementsToChange', selectorOfElementsToChange)
-  console.log('attributeToChange', selectorOfElementsToChange)
+
   const storage = {
     _scopedAttributeNameToStore: `automician.ButtonsMenu.${selectorOfElementsToChange}.${attributeToChange}`,
     getAttributeToChangeValue() {
@@ -70,10 +69,17 @@ export default props => {
 
   const changeElementsAttribute = value =>
     document.querySelectorAll(selectorOfElementsToChange).forEach(element => {
+      console.log('element', element)
       if (element.hasAttribute(attributeToChange)) {
+        console.log('element[attributeToChange]1', element[attributeToChange])
+        console.log('value1', value)
         element[attributeToChange] = value
       } else {
+        console.log('element[attributeToChange]2', element[attributeToChange])
+        console.log('value2', value)
         element.setAttribute(attributeToChange, value)
+        console.log('element[attributeToChange]3', element[attributeToChange])
+        console.log('value3', value)
       }
     })
 
