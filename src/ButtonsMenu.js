@@ -77,8 +77,8 @@ export default props => {
         // element[attributeToChange] = value
       } else {
         console.log('2')
-        // element.setAttribute(attributeToChange, value)
-        element.attributes[attributeToChange].value = value.toUpperCase()
+        element.setAttribute(attributeToChange, value.toUpperCase())
+        // element.attributes[attributeToChange].value = value.toUpperCase()
       }
     })
 
