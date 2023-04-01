@@ -72,13 +72,9 @@ export default props => {
   const changeElementsAttribute = value =>
     document.querySelectorAll(selectorOfElementsToChange).forEach(element => {
       if (element.hasAttribute(attributeToChange)) {
-        console.log('1')
         element.attributes[attributeToChange].value = value.toUpperCase()
-        // element[attributeToChange] = value
       } else {
-        console.log('2')
         element.setAttribute(attributeToChange, value.toUpperCase())
-        // element.attributes[attributeToChange].value = value.toUpperCase()
       }
     })
 
