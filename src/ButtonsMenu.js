@@ -26,6 +26,8 @@ export default props => {
       ...document.querySelectorAll(selectorOfElementsToChange),
     ]
 
+    console.log('elementsToChange', elementsToChange)
+
     const [hostsAttributeSamePrefilledValue] = elementsToChange.reduce(
       (sameValue, host) => {
         const areEqual = (arr1, arr2) =>
@@ -69,9 +71,8 @@ export default props => {
 
   const changeElementsAttribute = value =>
     document.querySelectorAll(selectorOfElementsToChange).forEach(element => {
-      console.log('element', element)
       if (element.hasAttribute(attributeToChange)) {
-        console.log('element[attributeToChange]1', attributeToChange)
+        console.log('element[attributeToChange]1', element[attributeToChange])
         console.log('value1', value)
         element[attributeToChange] = value
       } else {
