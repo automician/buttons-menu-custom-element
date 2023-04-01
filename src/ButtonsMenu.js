@@ -10,7 +10,8 @@ export default props => {
   const maybeAskedDefaultValue = attributes.default?.value
   const maybeContainerizedContentLoadedEvent = attributes['on']?.value
   const shouldWeRenderOnEvent = !!maybeContainerizedContentLoadedEvent
- console.log(attributeToChange)
+  console.log('selectorOfElementsToChange', selectorOfElementsToChange)
+  console.log('attributeToChange', selectorOfElementsToChange)
   const storage = {
     _scopedAttributeNameToStore: `automician.ButtonsMenu.${selectorOfElementsToChange}.${attributeToChange}`,
     getAttributeToChangeValue() {
