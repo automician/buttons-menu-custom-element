@@ -71,7 +71,7 @@ export default props => {
     document.querySelectorAll(selectorOfElementsToChange).forEach(element => {
       console.log('element', element)
       if (element.hasAttribute(attributeToChange)) {
-        console.log('element[attributeToChange]1', element[attributeToChange])
+        console.log('element[attributeToChange]1', attributeToChange)
         console.log('value1', value)
         element[attributeToChange] = value
       } else {
