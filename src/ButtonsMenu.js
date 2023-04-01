@@ -45,7 +45,7 @@ export default props => {
 
         if (sameValueWasSet && areEqual(sameValue, [hostDefault])) {
           // compromised!
-          return []
+          // return []
         }
 
         return [hostDefault]
