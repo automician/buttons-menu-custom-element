@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useLayoutEffect } from 'react'
 import './Style.scss'
 
 export default props => {
@@ -26,8 +26,6 @@ export default props => {
       ...document.querySelectorAll(selectorOfElementsToChange),
     ]
 
-    console.log('elementsToChange', elementsToChange)
-
     const [hostsAttributeSamePrefilledValue] = elementsToChange.reduce(
       (sameValue, host) => {
         const areEqual = (arr1, arr2) =>
@@ -45,7 +43,7 @@ export default props => {
 
         if (sameValueWasSet && areEqual(sameValue, [hostDefault])) {
           // compromised!
-          // return []
+          return []
         }
 
         return [hostDefault]
@@ -93,6 +91,7 @@ export default props => {
         .then(
           loaded => changeElementsAttribute(valueFromStorage),
           notLoaded => changeElementsAttribute(valueFromStorage),
+          document.dispatchEvent(new Event('FlexAndButtonsLoaded'))
         )
         .catch(err => console.log(err))
     },
