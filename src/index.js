@@ -5,30 +5,36 @@ import ButtonsMenu from './ButtonsMenu'
 
 register(ButtonsMenu, 'buttons-menu', React, ReactDOM)
 
-register(
-  ({ children }) => <div style={{ position: 'fixed' }}>{children}</div>,
+register(({ rootElement, children }) => {
+  rootElement.style.position = 'fixed'
+  rootElement.style.right = '15px'
+  rootElement.style.top = '15px'
+  rootElement.style.display = 'flex'
+  rootElement.style.flexDirection = 'column'
+  rootElement.style.alignItems = 'flex-end'
+  return (
+    <>
+      {children}
+    </>
+  )
+},
   'fixed-layout',
   React,
   ReactDOM,
 )
 
 register(
-  ({ children, style }) => {
-    // useEffect(() => {
+  ({ rootElement, children }) => {
+    rootElement.style.display = 'flex'
+    rootElement.style.flexDirection = 'row'
+    rootElement.style.alignItems = 'center'
     useLayoutEffect(() => {
       document.dispatchEvent(new Event('FlexLayoutContentLoaded'))
     })
     return (
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          ...style,
-        }}
-      >
+      <>
         {children}
-      </div>
+      </>
     )
   },
   'flex-layout',
@@ -44,7 +50,6 @@ register(
       },
     } = rootElement
     rootElement.style.flex = grow
-    console.log('space', grow)
     return children || React.Component
   },
   'flex-fill',

@@ -6,9 +6,8 @@ export default props => {
 
   const selectorOfElementsToChange = attributes['change-selector'].value
   const attributeToChange = attributes['change-attribute'].value
-  const valuesList = attributes['values'].value.split(',')
+  const valuesList = attributes['values'].value.split(',').map(value => value.trim())
   const maybeAskedDefaultValue = attributes.default?.value
-
   const maybeContainerizedContentLoadedEvent = attributes['on']?.value
   const shouldWeRenderOnEvent = !!maybeContainerizedContentLoadedEvent
 
@@ -26,7 +25,6 @@ export default props => {
     const elementsToChange = [
       ...document.querySelectorAll(selectorOfElementsToChange),
     ]
-    console.log('elementsToChange', elementsToChange)
 
     const [hostsAttributeSamePrefilledValue] = elementsToChange.reduce(
       (sameValue, host) => {
@@ -63,9 +61,6 @@ export default props => {
 
   const isContentLoadedPromise = shouldWeRenderOnEvent
     ? new Promise((resolve, reject) => {
-        setTimeout(() => {
-          reject()
-        }, 2000)
         document.addEventListener(maybeContainerizedContentLoadedEvent, () =>
           resolve(),
         )
@@ -75,9 +70,9 @@ export default props => {
   const changeElementsAttribute = value =>
     document.querySelectorAll(selectorOfElementsToChange).forEach(element => {
       if (element.hasAttribute(attributeToChange)) {
-        element[attributeToChange] = value
+        element.attributes[attributeToChange].value = value.toUpperCase()
       } else {
-        element.setAttribute(attributeToChange, value)
+        element.setAttribute(attributeToChange, value.toUpperCase())
       }
     })
 
@@ -92,10 +87,13 @@ export default props => {
 
   useEffect(
     () => {
-      isContentLoadedPromise.then(
-        loaded => changeElementsAttribute(valueFromStorage),
-        notLoaded => changeElementsAttribute(valueFromStorage),
-      )
+      isContentLoadedPromise
+        .then(
+          loaded => changeElementsAttribute(valueFromStorage),
+          notLoaded => changeElementsAttribute(valueFromStorage),
+          document.dispatchEvent(new Event('FlexAndButtonsLoaded'))
+        )
+        .catch(err => console.log(err))
     },
     [], // on mount render only
   )
@@ -113,7 +111,10 @@ export default props => {
             value
             key={value}
             className="values-list-item"
-            onClick={() => changeAttributeValueHandler(value)}
+            onClick={() => {
+              changeAttributeValueHandler(value)
+              document.dispatchEvent(new Event('changeLanguage'))
+            }}
           >
             {value.toUpperCase()}
           </div>
