@@ -61,9 +61,10 @@ export default props => {
 
   const isContentLoadedPromise = shouldWeRenderOnEvent
     ? new Promise((resolve, reject) => {
-        document.addEventListener(maybeContainerizedContentLoadedEvent, () =>
-          resolve(),
-        )
+        document.addEventListener(maybeContainerizedContentLoadedEvent, () => {
+          console.log('FlexAndButtonsLoaded')
+          resolve()
+        })
       })
     : Promise.resolve()
 
