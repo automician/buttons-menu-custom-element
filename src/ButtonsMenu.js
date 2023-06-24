@@ -3,7 +3,7 @@ import './Style.scss'
 
 export default props => {
   const attributes = props.rootElement.attributes
-
+  console.log('attributes', attributes)
   const selectorOfElementsToChange = attributes['change-selector'].value
   const attributeToChange = attributes['change-attribute'].value
   const valuesList = attributes['values'].value.split(',').map(value => value.trim())
