@@ -22,11 +22,10 @@ export default props => {
   }
 
   if (!storage.getAttributeToChangeValue()) {
-    console.log('selectorOfElementsToChange', selectorOfElementsToChange)
     const elementsToChange = [
       ...document.querySelectorAll(selectorOfElementsToChange),
     ]
-    console.log('elementsToChange', elementsToChange)
+
     const [hostsAttributeSamePrefilledValue] = elementsToChange.reduce(
       (sameValue, host) => {
         const areEqual = (arr1, arr2) =>
@@ -59,11 +58,9 @@ export default props => {
   }
 
   const valueFromStorage = storage.getAttributeToChangeValue()
-console.log('valueFromStorage', valueFromStorage)
   const isContentLoadedPromise = shouldWeRenderOnEvent
     ? new Promise((resolve, reject) => {
         document.addEventListener(maybeContainerizedContentLoadedEvent, () => {
-          console.log('FlexAndButtonsLoaded')
           resolve()
         })
       })
