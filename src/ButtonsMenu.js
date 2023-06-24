@@ -22,6 +22,7 @@ export default props => {
   }
 
   if (!storage.getAttributeToChangeValue()) {
+    console.log('selectorOfElementsToChange', selectorOfElementsToChange)
     const elementsToChange = [
       ...document.querySelectorAll(selectorOfElementsToChange),
     ]
@@ -58,7 +59,7 @@ export default props => {
   }
 
   const valueFromStorage = storage.getAttributeToChangeValue()
-console.log('valueFromStorage', valueFromStorage) 
+console.log('valueFromStorage', valueFromStorage)
   const isContentLoadedPromise = shouldWeRenderOnEvent
     ? new Promise((resolve, reject) => {
         document.addEventListener(maybeContainerizedContentLoadedEvent, () => {
