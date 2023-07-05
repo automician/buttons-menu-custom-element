@@ -91,7 +91,6 @@ export default props => {
           loaded => changeElementsAttribute(valueFromStorage),
           notLoaded => changeElementsAttribute(valueFromStorage),
           document.dispatchEvent(new Event('FlexAndButtonsLoaded')),
-          console.log('ButtonsLoaded')
         )
         .catch(err => console.log(err))
     },
