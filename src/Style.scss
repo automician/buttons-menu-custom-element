@@ -25,23 +25,29 @@ code {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 40px;
-  height: 40px;
-  background-color: rgb(234, 211, 211);
+  width: 48px;
+  height: 48px;
+  // background-color: rgb(234, 211, 211);
+  // background-color: rgb(230, 224, 224);
+  background-color: rgba(27,31,35, 0.05);
+  // background-color: #ebebeb;
+  // background-color: #F7F7F7;
+  // background-color: #d7d9dc;
+  // background-color: #878787;
+  // color: rgb(235, 235, 235);
+  // color: rgb(53, 52, 52);
+  // color: #fff;
   border-radius: 50%;
   margin: 3px 10px 3px 0;
   cursor: pointer;
-  order: 2;
-}
-
-.current-value-span {
+  order: 1;
 }
 
 .values-list {
   display: flex;
   flex-direction: row;
   visibility: hidden;
-  order: 1;
+  order: 2;
   opacity: 0;
   transition: all 0.3s;
 }

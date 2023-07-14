@@ -7,11 +7,11 @@ register(ButtonsMenu, 'buttons-menu', React, ReactDOM)
 
 register(({ rootElement, children }) => {
   rootElement.style.position = 'fixed'
-  rootElement.style.right = '15px'
+  rootElement.style.left = '20px'
   rootElement.style.top = '15px'
   rootElement.style.display = 'flex'
   rootElement.style.flexDirection = 'column'
-  rootElement.style.alignItems = 'flex-end'
+  rootElement.style.alignItems = 'flex-start'
   return (
     <>
       {children}
