@@ -21,18 +21,96 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sindresorhus/github-markdown-css@4/github-markdown.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/PrismJS/prism@1/themes/prism.min.css">
   <style>
-    .buttons-wrapper {
-      position: fixed;
-      right: 15px;
-      top: 15px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      /* justify-content: flex-start; */
-      align-items: flex-end;
-    }
+      .codeGroup {
+          width: auto;
+          margin: auto;
+          background-color: #F7F7F7;
+          border-radius: 10px;
+          box-shadow: 0px 5px 15px rgba(0, 0, 0, .1);
+        }
+
+        button {
+          letter-spacing: 0.75px;
+          border: none;
+          padding: 10px;
+          background-color: rgba(27,31,35,.05);
+          color: #778796;
+          font-size: 12px;
+          font-weight: 200;
+          cursor: pointer;
+          transition: 0.5s;
+        }
+
+        button:hover {
+          background-color: rgba(0,183,206,0.1);
+        }
+
+        button.active {
+          background-color: rgba(27,31,35,.05);
+          border-bottom: rgb(0,183,206) 1px solid;
+        }
+
+        .tab-button {
+          margin-right: 4px;
+        }
+
+        .active {
+          background-color: white;
+        }
+
+        .tab-content,.inline-content {
+          display: none;
+        }
+
+        .tab-content.active {
+          display: block;
+        }
+
+        .inline-content.active {
+          display: inline;
+        }
+
+        code, pre {
+          color: #3d3d3d  !important;
+          background:0 0 !important;
+          text-shadow:0 1px #fff !important;
+          font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace !important;
+          font-size:1em   !important;
+          text-align:left !important;
+          white-space:pre !important;
+          word-spacing:normal !important;
+          word-break:normal !important;
+          word-wrap:normal !important;
+          line-height:25px !important;
+          -moz-tab-size:4 !important;
+          -o-tab-size:4 !important;
+          tab-size:4 !important;
+          -webkit-hyphens:none !important;
+          -moz-hyphens:none !important;
+          -ms-hyphens:none !important;
+          hyphens:none !important;
+        }
+        code b, pre b {
+          font-weight: 800 !important;
+          font-size: 1.1em !important;
+          color:#000 !important;
+        }
+        code em, pre em, span[style*="text-decoration:underline"] {
+          font-size: 1.1em !important;
+        }
+        pre{
+          padding:1em !important;
+          margin:0 0 1em 0 !important;
+          overflow:auto !important;
+        }
+        :not(pre)>code,pre{
+          background:#F7F7F7 !important;
+        }
   </style>
+
   <title>React App</title>
 </head>
 
@@ -48,13 +126,11 @@
   </div> -->
 
   <fixed-layout>
-    <!-- <flex-layout style="top: 15px; right: 15px; flex-direction: column; align-items: flex-end;"> -->
       <buttons-menu change-selector=".current-code" change-attribute="value" values="js,ts,py,java"
       default="java"></buttons-menu>
 
       <buttons-menu change-selector=".current-lang" change-attribute="value" values="en,uk,ru"
       default="uk"></buttons-menu>
-    <!-- </flex-layout> -->
   </fixed-layout>
 
 
@@ -82,6 +158,71 @@
   <flex-layout>
     <flex-2></flex-2>
     <flex-6>
+      <br />
+      <br />
+      <br />
+      <br />
+      <div class="codeGroup">
+        <div class="buttonWrapper">
+          <button class="tab-button active" data-id="js" >js</button>
+          <button class="tab-button" data-id="ts" >ts</button>
+          <button class="tab-button" data-id="py" >py</button>
+          <button class="tab-button" data-id="java" >java</button>
+          <button class="tab-button" data-id="cs" >cs</button>
+                  </div>
+                  <div class="contentWrapper">
+                    <div class="tab-content active" id="js"><pre class="language-typescript" tabindex="0"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> browser<span class="token punctuation">,</span> by <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'selenidejs'</span>
+
+          <span class="token comment">// ...</span>
+
+          browser<span class="token punctuation">.</span><span class="token function">element</span><span class="token punctuation">(</span>by<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token string">'q'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">// ...</span>
+
+          browser<span class="token punctuation">.</span><span class="token function">element</span><span class="token punctuation">(</span>by<span class="token punctuation">.</span><span class="token function">id</span><span class="token punctuation">(</span><span class="token string">'new-todo'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">// ...</span>
+          <span class="token comment">// or yet simpler:</span>
+          browser<span class="token punctuation">.</span><span class="token function">element</span><span class="token punctuation">(</span><span class="token string">'#new-todo'</span><span class="token punctuation">)</span>  <span class="token comment">// ...</span>
+          </code></pre></div>
+          <div class="tab-content" id="ts"><pre class="language-ts" tabindex="0"><code class="language-ts"><span class="token keyword">import</span> <span class="token punctuation">{</span> browser<span class="token punctuation">,</span> by <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'selenidejs'</span>
+
+          <span class="token comment">// ...</span>
+
+          browser<span class="token punctuation">.</span><span class="token function">element</span><span class="token punctuation">(</span>by<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token string">'q'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">// ...</span>
+
+          browser<span class="token punctuation">.</span><span class="token function">element</span><span class="token punctuation">(</span>by<span class="token punctuation">.</span><span class="token function">id</span><span class="token punctuation">(</span><span class="token string">'new-todo'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">// ...</span>
+          <span class="token comment">// or yet simpler:</span>
+          browser<span class="token punctuation">.</span><span class="token function">element</span><span class="token punctuation">(</span><span class="token string">'#new-todo'</span><span class="token punctuation">)</span>  <span class="token comment">// ...</span>
+          </code></pre></div>
+          <div class="tab-content" id="py"><pre class="language-py" tabindex="0"><code class="language-py"><span class="token keyword">from</span> selene <span class="token keyword">import</span> browser<span class="token punctuation">,</span> by
+
+          <span class="token comment"># ...</span>
+
+          browser<span class="token punctuation">.</span>element<span class="token punctuation">(</span>by<span class="token punctuation">.</span>name<span class="token punctuation">(</span><span class="token string">'q'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># ...</span>
+
+          browser<span class="token punctuation">.</span>element<span class="token punctuation">(</span>by<span class="token punctuation">.</span><span class="token builtin">id</span><span class="token punctuation">(</span><span class="token string">'new-todo'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># ...</span>
+          <span class="token comment"># or yet simpler:</span>
+          browser<span class="token punctuation">.</span>element<span class="token punctuation">(</span><span class="token string">'#new-todo'</span><span class="token punctuation">)</span>  <span class="token comment"># ...</span>
+          </code></pre></div>
+          <div class="tab-content" id="java"><pre class="language-java" tabindex="0"><code class="language-java"><span class="token keyword">import</span> <span class="token keyword">static</span> <span class="token import static"><span class="token namespace">com<span class="token punctuation">.</span>codeborne<span class="token punctuation">.</span>selenide<span class="token punctuation">.</span></span><span class="token class-name">Selenide</span><span class="token punctuation">.</span><span class="token operator">*</span></span><span class="token punctuation">;</span>
+          <span class="token keyword">import</span> <span class="token keyword">static</span> <span class="token import static"><span class="token namespace">com<span class="token punctuation">.</span>codeborne<span class="token punctuation">.</span>selenide<span class="token punctuation">.</span></span><span class="token class-name">Selectors</span><span class="token punctuation">.</span><span class="token operator">*</span></span><span class="token punctuation">;</span>
+          <span class="token comment">//...</span>
+
+          <span class="token function">element</span><span class="token punctuation">(</span><span class="token function">byName</span><span class="token punctuation">(</span><span class="token string">"q"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">// ...</span>
+
+          <span class="token function">element</span><span class="token punctuation">(</span><span class="token function">byId</span><span class="token punctuation">(</span><span class="token string">"new-todo"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">// ...</span>
+          <span class="token comment">// or yet simpler:</span>
+          <span class="token function">element</span><span class="token punctuation">(</span><span class="token string">"#new-todo"</span><span class="token punctuation">)</span>  <span class="token comment">// ...</span>
+          </code></pre></div>
+          <div class="tab-content" id="cs"><pre class="language-cs" tabindex="0"><code class="language-cs"><span class="token keyword">using</span> <span class="token keyword">static</span> <span class="token class-name">NSelene<span class="token punctuation">.</span>Selene</span><span class="token punctuation">;</span>
+          <span class="token keyword">using</span> <span class="token namespace">OpenQA<span class="token punctuation">.</span>Selenium</span><span class="token punctuation">;</span>
+          <span class="token comment">//...</span>
+
+          <span class="token function">S</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">Name</span><span class="token punctuation">(</span><span class="token string">"q"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">// ...</span>
+
+          <span class="token function">S</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">Id</span><span class="token punctuation">(</span><span class="token string">"new-todo"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">// ...</span>
+          <span class="token comment">// or yet simpler:</span>
+          <span class="token function">S</span><span class="token punctuation">(</span><span class="token string">"#new-todo"</span><span class="token punctuation">)</span>  <span class="token comment">// ...</span>
+          </code></pre></div>
+        </div>
+      </div>
       <!---->
       <div id="content">
         <br>
