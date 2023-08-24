@@ -1,0 +1,52 @@
+.button-hover {
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ color: rgb(130, 127, 127);
+ font-weight: 500;
+}
+
+.current-value {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  background-color: #ebecee;
+  border-radius: 50%;
+  margin: 3px 10px 3px 0;
+  cursor: pointer;
+  order: 1;
+}
+
+.values-list {
+  display: flex;
+  flex-direction: row;
+  visibility: hidden;
+  order: 2;
+  opacity: 0;
+  transition: all 0.3s;
+  background-color: #fff;
+  border-radius: 40px;
+  border: 2px solid rgba(57, 74, 79, 0.5);
+}
+
+.values-list-item {
+  padding: 10px 0 10px 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.values-list-item:hover {
+  color: rgb(53, 52, 52);
+}
+
+.values-list-item:last-child {
+  padding: 10px;
+}
+
+.button-hover:hover .values-list {
+  opacity: 1;
+  visibility: visible;
+}
