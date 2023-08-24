@@ -58,21 +58,20 @@ export default props => {
   }
 
   const valueFromStorage = storage.getAttributeToChangeValue()
-
   const isContentLoadedPromise = shouldWeRenderOnEvent
     ? new Promise((resolve, reject) => {
-        document.addEventListener(maybeContainerizedContentLoadedEvent, () =>
-          resolve(),
-        )
+        document.addEventListener(maybeContainerizedContentLoadedEvent, () => {
+          resolve()
+        })
       })
     : Promise.resolve()
 
   const changeElementsAttribute = value =>
     document.querySelectorAll(selectorOfElementsToChange).forEach(element => {
       if (element.hasAttribute(attributeToChange)) {
-        element.attributes[attributeToChange].value = value.toUpperCase()
+        element.attributes[attributeToChange].value = value.toLowerCase()
       } else {
-        element.setAttribute(attributeToChange, value.toUpperCase())
+        element.setAttribute(attributeToChange, value.toLowerCase())
       }
     })
 
@@ -91,7 +90,7 @@ export default props => {
         .then(
           loaded => changeElementsAttribute(valueFromStorage),
           notLoaded => changeElementsAttribute(valueFromStorage),
-          document.dispatchEvent(new Event('FlexAndButtonsLoaded'))
+          document.dispatchEvent(new Event('FlexAndButtonsLoaded')),
         )
         .catch(err => console.log(err))
     },

@@ -25,25 +25,25 @@ code {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 40px;
-  height: 40px;
-  background-color: rgb(234, 211, 211);
+  width: 48px;
+  height: 48px;
+  background-color: #ebecee;
   border-radius: 50%;
   margin: 3px 10px 3px 0;
   cursor: pointer;
-  order: 2;
-}
-
-.current-value-span {
+  order: 1;
 }
 
 .values-list {
   display: flex;
   flex-direction: row;
   visibility: hidden;
-  order: 1;
+  order: 2;
   opacity: 0;
   transition: all 0.3s;
+  background-color: #fff;
+  border-radius: 40px;
+  border: 2px solid rgba(57, 74, 79, 0.5);
 }
 
 .values-list-item {
