@@ -21,8 +21,15 @@ export default props => {
     },
   }
 
+  const url = new URL(window.location.href)
+  const keyInSearchParams = selectorOfElementsToChange.split('-')[1]
+  const valueInSearchParams = url.searchParams.get(keyInSearchParams)
+  if (valueInSearchParams) {
+    storage.setAttributeToChangeValue(valueInSearchParams)
+  }
+
   if (!storage.getAttributeToChangeValue()) {
-    const elementsToChange = [
+        const elementsToChange = [
       ...document.querySelectorAll(selectorOfElementsToChange),
     ]
 
