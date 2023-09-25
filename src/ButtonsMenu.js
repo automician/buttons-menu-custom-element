@@ -21,15 +21,8 @@ export default props => {
     },
   }
 
-  const url = new URL(window.location.href)
-  const keyInSearchParams = selectorOfElementsToChange.split('-')[1]
-  const valueInSearchParams = url.searchParams.get(keyInSearchParams)
-  if (valueInSearchParams) {
-    storage.setAttributeToChangeValue(valueInSearchParams)
-  }
-
   if (!storage.getAttributeToChangeValue()) {
-        const elementsToChange = [
+    const elementsToChange = [
       ...document.querySelectorAll(selectorOfElementsToChange),
     ]
 
@@ -62,6 +55,12 @@ export default props => {
       hostsAttributeSamePrefilledValue || maybeAskedDefaultValue || valuesList[0]
 
     storage.setAttributeToChangeValue(defaultValue)
+  }
+
+  const url = new URL(window.location.href)
+  const valueInSearchParams = url.searchParams.get(attributeToChange)
+  if (valueInSearchParams) {
+    storage.setAttributeToChangeValue(valueInSearchParams)
   }
 
   const valueFromStorage = storage.getAttributeToChangeValue()
@@ -118,7 +117,7 @@ export default props => {
             key={value}
             className="values-list-item"
             onClick={() => {
-              changeAttributeValueHandler(value)
+              valueInSearchParams || changeAttributeValueHandler(value)
               document.dispatchEvent(new Event('changeLanguage'))
             }}
           >
