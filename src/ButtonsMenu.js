@@ -59,7 +59,8 @@ export default props => {
 
   const url = new URL(window.location.href)
   const valueInSearchParams = url.searchParams.get(attributeToChange)
-  if (valueInSearchParams) {
+  //for local running use selectorOfElementsToChange.split('-')[1] instead of attributeToChange
+  if (valuesList.includes(valueInSearchParams)) {
     storage.setAttributeToChangeValue(valueInSearchParams)
   }
 
@@ -110,6 +111,7 @@ export default props => {
           {state.selectedValue.toUpperCase()}
         </span>
       </div>
+      {!!valueInSearchParams ||
       <div className="values-list">
         {valuesList.map(value => (
           <div
@@ -117,14 +119,14 @@ export default props => {
             key={value}
             className="values-list-item"
             onClick={() => {
-              valueInSearchParams || changeAttributeValueHandler(value)
+              changeAttributeValueHandler(value)
               document.dispatchEvent(new Event('changeLanguage'))
             }}
           >
             {value.toUpperCase()}
           </div>
         ))}
-      </div>
+      </div>}
     </div>
   )
 }
