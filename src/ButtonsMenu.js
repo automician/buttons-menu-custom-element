@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import './Style.scss'
+import './ButtonsMenuStyles.scss'
 
 export default props => {
   const attributes = props.rootElement.attributes
