@@ -6,7 +6,9 @@ export default props => {
 
   const selectorOfElementsToChange = attributes['change-selector'].value
   const attributeToChange = attributes['change-attribute'].value
-  const valuesList = attributes['values'].value.split(',').map(value => value.trim())
+  const valuesList = attributes['values'].value
+    .split(',')
+    .map(value => value.trim())
   const maybeAskedDefaultValue = attributes.default?.value
   const maybeContainerizedContentLoadedEvent = attributes['on']?.value
   const shouldWeRenderOnEvent = !!maybeContainerizedContentLoadedEvent
@@ -105,29 +107,29 @@ export default props => {
   )
 
   return (
-    <div className="button-hover">
-      {!!valueInSearchParams ||
-      <div className="current-value">
-        <span className="current-value-span">
-          {state.selectedValue.toUpperCase()}
-        </span>
-      </div>}
-      {!!valueInSearchParams ||
-      <div className="values-list">
-        {valuesList.map(value => (
-          <div
-            value
-            key={value}
-            className="values-list-item"
-            onClick={() => {
-              changeAttributeValueHandler(value)
-              document.dispatchEvent(new Event('changeLanguage'))
-            }}
-          >
-            {value.toUpperCase()}
-          </div>
-        ))}
-      </div>}
-    </div>
+    !!valueInSearchParams || (
+      <div className="button-hover">
+        <div className="current-value">
+          <span className="current-value-span">
+            {state.selectedValue.toUpperCase()}
+          </span>
+        </div>
+        <div className="values-list">
+          {valuesList.map(value => (
+            <div
+              value
+              key={value}
+              className="values-list-item"
+              onClick={() => {
+                changeAttributeValueHandler(value)
+                document.dispatchEvent(new Event('changeLanguage'))
+              }}
+            >
+              {value.toUpperCase()}
+            </div>
+          ))}
+        </div>
+      </div>
+    )
   )
 }
