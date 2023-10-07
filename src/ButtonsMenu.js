@@ -106,11 +106,12 @@ export default props => {
 
   return (
     <div className="button-hover">
+      {!!valueInSearchParams ||
       <div className="current-value">
         <span className="current-value-span">
           {state.selectedValue.toUpperCase()}
         </span>
-      </div>
+      </div>}
       {!!valueInSearchParams ||
       <div className="values-list">
         {valuesList.map(value => (
