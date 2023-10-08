@@ -6,7 +6,9 @@ export default props => {
 
   const selectorOfElementsToChange = attributes['change-selector'].value
   const attributeToChange = attributes['change-attribute'].value
-  const valuesList = attributes['values'].value.split(',').map(value => value.trim())
+  const valuesList = attributes['values'].value
+    .split(',')
+    .map(value => value.trim())
   const maybeAskedDefaultValue = attributes.default?.value
   const maybeContainerizedContentLoadedEvent = attributes['on']?.value
   const shouldWeRenderOnEvent = !!maybeContainerizedContentLoadedEvent
@@ -57,6 +59,13 @@ export default props => {
     storage.setAttributeToChangeValue(defaultValue)
   }
 
+  const url = new URL(window.location.href)
+  const valueInSearchParams = url.searchParams.get(attributeToChange)
+  //for local running use selectorOfElementsToChange.split('-')[1] instead of attributeToChange
+  if (valuesList.includes(valueInSearchParams)) {
+    storage.setAttributeToChangeValue(valueInSearchParams)
+  }
+
   const valueFromStorage = storage.getAttributeToChangeValue()
   const isContentLoadedPromise = shouldWeRenderOnEvent
     ? new Promise((resolve, reject) => {
@@ -98,27 +107,29 @@ export default props => {
   )
 
   return (
-    <div className="button-hover">
-      <div className="current-value">
-        <span className="current-value-span">
-          {state.selectedValue.toUpperCase()}
-        </span>
+    !!valueInSearchParams || (
+      <div className="button-hover">
+        <div className="current-value">
+          <span className="current-value-span">
+            {state.selectedValue.toUpperCase()}
+          </span>
+        </div>
+        <div className="values-list">
+          {valuesList.map(value => (
+            <div
+              value
+              key={value}
+              className="values-list-item"
+              onClick={() => {
+                changeAttributeValueHandler(value)
+                document.dispatchEvent(new Event('changeLanguage'))
+              }}
+            >
+              {value.toUpperCase()}
+            </div>
+          ))}
+        </div>
       </div>
-      <div className="values-list">
-        {valuesList.map(value => (
-          <div
-            value
-            key={value}
-            className="values-list-item"
-            onClick={() => {
-              changeAttributeValueHandler(value)
-              document.dispatchEvent(new Event('changeLanguage'))
-            }}
-          >
-            {value.toUpperCase()}
-          </div>
-        ))}
-      </div>
-    </div>
+    )
   )
 }

@@ -6,21 +6,18 @@ import ScrollToTopButton from './ScrollToTopButton'
 import './Style.scss'
 
 register(ButtonsMenu, 'buttons-menu', React, ReactDOM)
-register(ScrollToTopButton, 'scroll-to-top', React, ReactDOM);
+register(ScrollToTopButton, 'scroll-to-top', React, ReactDOM)
 
-register(({ rootElement, children }) => {
-  rootElement.style.position = 'fixed'
-  rootElement.style.left = '20px'
-  rootElement.style.top = '15px'
-  rootElement.style.display = 'flex'
-  rootElement.style.flexDirection = 'column'
-  rootElement.style.alignItems = 'flex-start'
-  return (
-    <>
-      {children}
-    </>
-  )
-},
+register(
+  ({ rootElement, children }) => {
+    rootElement.style.position = 'fixed'
+    rootElement.style.left = '20px'
+    rootElement.style.top = '15px'
+    rootElement.style.display = 'flex'
+    rootElement.style.flexDirection = 'column'
+    rootElement.style.alignItems = 'flex-start'
+    return <>{children}</>
+  },
   'fixed-layout',
   React,
   ReactDOM,
@@ -34,11 +31,7 @@ register(
     useLayoutEffect(() => {
       document.dispatchEvent(new Event('FlexLayoutContentLoaded'))
     })
-    return (
-      <>
-        {children}
-      </>
-    )
+    return <>{children}</>
   },
   'flex-layout',
   React,
