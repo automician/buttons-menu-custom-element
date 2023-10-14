@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './ScrollToTopButtonStyles.scss'
 import ArrowImg from './images/arrow_up.png'
+import { isDesktop } from 'react-device-detect'
 
 export default () => {
   const [visible, setVisible] = useState(false)
@@ -14,7 +15,9 @@ export default () => {
     }
   }
 
-  window.addEventListener('scroll', toggleVisible)
+  if (isDesktop) {
+    window.addEventListener('scroll', toggleVisible)
+  }
 
   return (
     <div className="scroll-button">
