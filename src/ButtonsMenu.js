@@ -12,6 +12,7 @@ export default props => {
   const maybeAskedDefaultValue = attributes.default?.value
   const maybeContainerizedContentLoadedEvent = attributes['on']?.value
   const shouldWeRenderOnEvent = !!maybeContainerizedContentLoadedEvent
+  const toBeHidden = attributes.hide?.value === "true"
 
   const storage = {
     _scopedAttributeNameToStore: `automician.ButtonsMenu.${selectorOfElementsToChange}.${attributeToChange}`,
@@ -107,7 +108,7 @@ export default props => {
   )
 
   return (
-    !!valueInSearchParams || (
+    !!valueInSearchParams || toBeHidden || (
       <div className="button-hover">
         <div className="current-value">
           <span className="current-value-span">
