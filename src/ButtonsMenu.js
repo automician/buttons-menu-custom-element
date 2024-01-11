@@ -12,7 +12,7 @@ export default props => {
   const maybeAskedDefaultValue = attributes.default?.value
   const maybeContainerizedContentLoadedEvent = attributes['on']?.value
   const shouldWeRenderOnEvent = !!maybeContainerizedContentLoadedEvent
-  const toBeHidden = attributes.hide?.value === 'true'
+  const toBeHidden = attributes.hide?.value === 'true' || valuesList.length === 1
 
   const storage = {
     _scopedAttributeNameToStore: `automician.ButtonsMenu.${selectorOfElementsToChange}.${attributeToChange}`,
@@ -85,7 +85,11 @@ export default props => {
       }
     })
 
-  const [selectedValue, setSelectedValue] = useState(valueFromStorage)
+  const actualValue = valuesList.includes(valueFromStorage)
+    ? valueFromStorage
+    : maybeAskedDefaultValue || valuesList[0]
+
+  const [selectedValue, setSelectedValue] = useState(actualValue)
   const state = { selectedValue, setSelectedValue }
 
   function changeAttributeValueHandler(value) {
@@ -98,8 +102,8 @@ export default props => {
     () => {
       isContentLoadedPromise
         .then(
-          loaded => changeElementsAttribute(valueFromStorage),
-          notLoaded => changeElementsAttribute(valueFromStorage),
+          loaded => changeElementsAttribute(actualValue),
+          notLoaded => changeElementsAttribute(actualValue),
           document.dispatchEvent(new Event('FlexAndButtonsLoaded')),
         )
         .catch(err => console.log(err))
